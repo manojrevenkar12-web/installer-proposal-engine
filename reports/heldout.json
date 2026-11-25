@@ -1,0 +1,1702 @@
+{
+  "kind": "heldout",
+  "seeds": [
+    9101,
+    9102
+  ],
+  "householdsPerSeed": 400,
+  "engine": "rust",
+  "designs": [
+    {
+      "id": "spreadsheet",
+      "label": "Spreadsheet rules of thumb (status quo)",
+      "kind": "status-quo",
+      "mean": {
+        "leads": 400,
+        "signed": 113.5,
+        "winRate": 0.28375,
+        "revenuePer100LeadsEur": 540545.6,
+        "yieldErrorPct": 8.771007,
+        "savingsBiasPct": -0.03630086,
+        "brokenPromiseRate": 0.09754582,
+        "customerNpvEur": 8077.104,
+        "customerValuePer100LeadsEur": 229361.7,
+        "meanKwp": 8.34195,
+        "batteryShare": 1,
+        "inventedNumbersSent": 0,
+        "draftsRejected": 0,
+        "offersFromFallback": 0,
+        "faults": 22,
+        "faultDetectionRate": 0.7416667,
+        "materialFaults": 13,
+        "materialDetectionRate": 0.8636364,
+        "medianDaysToDetect": 40.25,
+        "causeAccuracy": 0,
+        "falseAlarmsPer100": 93.39857,
+        "offlineFlaggedRate": 0,
+        "lostKwhPerFault": 342.7603,
+        "engineParityMaxRelError": 8.881784e-16,
+        "faultsByKind": {
+          "outage": {
+            "faults": 8,
+            "detected": 8,
+            "causeCorrect": 0,
+            "medianDays": 14.75
+          },
+          "shading": {
+            "faults": 18,
+            "detected": 10,
+            "causeCorrect": 0,
+            "medianDays": 170
+          },
+          "string": {
+            "faults": 11,
+            "detected": 11,
+            "causeCorrect": 0,
+            "medianDays": 34
+          },
+          "soiling": {
+            "faults": 7,
+            "detected": 4,
+            "causeCorrect": 0,
+            "medianDays": 166
+          }
+        }
+      },
+      "perSeed": [
+        {
+          "leads": 400,
+          "signed": 111,
+          "winRate": 0.2775,
+          "revenuePer100LeadsEur": 535960,
+          "yieldErrorPct": 7.836147,
+          "savingsBiasPct": 1.641763,
+          "brokenPromiseRate": 0.1261261,
+          "customerNpvEur": 7798.888,
+          "customerValuePer100LeadsEur": 216419.1,
+          "meanKwp": 8.486486,
+          "batteryShare": 1,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 0,
+          "offersFromFallback": 0,
+          "faults": 24,
+          "faultDetectionRate": 0.8333333,
+          "materialFaults": 15,
+          "materialDetectionRate": 1,
+          "medianDaysToDetect": 35.5,
+          "causeAccuracy": 0,
+          "falseAlarmsPer100": 93.69369,
+          "offlineFlaggedRate": 0,
+          "lostKwhPerFault": 461.0085,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "outage": {
+              "faults": 8,
+              "detected": 8,
+              "causeCorrect": 0,
+              "medianDays": 29.5
+            },
+            "shading": {
+              "faults": 7,
+              "detected": 5,
+              "causeCorrect": 0,
+              "medianDays": 121
+            },
+            "string": {
+              "faults": 4,
+              "detected": 4,
+              "causeCorrect": 0,
+              "medianDays": 43
+            },
+            "soiling": {
+              "faults": 5,
+              "detected": 3,
+              "causeCorrect": 0,
+              "medianDays": 178
+            }
+          }
+        },
+        {
+          "leads": 400,
+          "signed": 116,
+          "winRate": 0.29,
+          "revenuePer100LeadsEur": 545131.3,
+          "yieldErrorPct": 9.705867,
+          "savingsBiasPct": -1.714365,
+          "brokenPromiseRate": 0.06896552,
+          "customerNpvEur": 8355.32,
+          "customerValuePer100LeadsEur": 242304.3,
+          "meanKwp": 8.197414,
+          "batteryShare": 1,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 0,
+          "offersFromFallback": 0,
+          "faults": 20,
+          "faultDetectionRate": 0.65,
+          "materialFaults": 11,
+          "materialDetectionRate": 0.7272727,
+          "medianDaysToDetect": 45,
+          "causeAccuracy": 0,
+          "falseAlarmsPer100": 93.10345,
+          "offlineFlaggedRate": 0,
+          "lostKwhPerFault": 224.5122,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "string": {
+              "faults": 7,
+              "detected": 7,
+              "causeCorrect": 0,
+              "medianDays": 25
+            },
+            "shading": {
+              "faults": 11,
+              "detected": 5,
+              "causeCorrect": 0,
+              "medianDays": 219
+            },
+            "soiling": {
+              "faults": 2,
+              "detected": 1,
+              "causeCorrect": 0,
+              "medianDays": 154
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "model-alone",
+      "label": "A model sizes and writes the offer alone",
+      "kind": "model-alone",
+      "mean": {
+        "leads": 400,
+        "signed": 119,
+        "winRate": 0.2975,
+        "revenuePer100LeadsEur": 566956.9,
+        "yieldErrorPct": 15.73561,
+        "savingsBiasPct": 5.184399,
+        "brokenPromiseRate": 0.2396893,
+        "customerNpvEur": 7903.59,
+        "customerValuePer100LeadsEur": 235123.1,
+        "meanKwp": 8.343249,
+        "batteryShare": 1,
+        "inventedNumbersSent": 208,
+        "draftsRejected": 0,
+        "offersFromFallback": 0,
+        "faults": 23.5,
+        "faultDetectionRate": 0.7759259,
+        "materialFaults": 13,
+        "materialDetectionRate": 0.8375,
+        "medianDaysToDetect": 45.5,
+        "causeAccuracy": 0,
+        "falseAlarmsPer100": 182.7895,
+        "offlineFlaggedRate": 0,
+        "lostKwhPerFault": 296.3509,
+        "engineParityMaxRelError": 8.881784e-16,
+        "faultsByKind": {
+          "outage": {
+            "faults": 7,
+            "detected": 7,
+            "causeCorrect": 0,
+            "medianDays": 14.5
+          },
+          "shading": {
+            "faults": 20,
+            "detected": 14,
+            "causeCorrect": 0,
+            "medianDays": 95
+          },
+          "string": {
+            "faults": 12,
+            "detected": 11,
+            "causeCorrect": 0,
+            "medianDays": 30.5
+          },
+          "soiling": {
+            "faults": 8,
+            "detected": 5,
+            "causeCorrect": 0,
+            "medianDays": 135
+          }
+        }
+      },
+      "perSeed": [
+        {
+          "leads": 400,
+          "signed": 118,
+          "winRate": 0.295,
+          "revenuePer100LeadsEur": 566678.8,
+          "yieldErrorPct": 15.55621,
+          "savingsBiasPct": 6.168748,
+          "brokenPromiseRate": 0.2627119,
+          "customerNpvEur": 7938.516,
+          "customerValuePer100LeadsEur": 234186.2,
+          "meanKwp": 8.439831,
+          "batteryShare": 1,
+          "inventedNumbersSent": 215,
+          "draftsRejected": 0,
+          "offersFromFallback": 0,
+          "faults": 27,
+          "faultDetectionRate": 0.8518519,
+          "materialFaults": 16,
+          "materialDetectionRate": 0.875,
+          "medianDaysToDetect": 35,
+          "causeAccuracy": 0,
+          "falseAlarmsPer100": 184.7458,
+          "offlineFlaggedRate": 0,
+          "lostKwhPerFault": 348.6196,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "outage": {
+              "faults": 7,
+              "detected": 7,
+              "causeCorrect": 0,
+              "medianDays": 29
+            },
+            "shading": {
+              "faults": 8,
+              "detected": 7,
+              "causeCorrect": 0,
+              "medianDays": 121
+            },
+            "string": {
+              "faults": 6,
+              "detected": 5,
+              "causeCorrect": 0,
+              "medianDays": 22
+            },
+            "soiling": {
+              "faults": 6,
+              "detected": 4,
+              "causeCorrect": 0,
+              "medianDays": 116
+            }
+          }
+        },
+        {
+          "leads": 400,
+          "signed": 120,
+          "winRate": 0.3,
+          "revenuePer100LeadsEur": 567235,
+          "yieldErrorPct": 15.915,
+          "savingsBiasPct": 4.200049,
+          "brokenPromiseRate": 0.2166667,
+          "customerNpvEur": 7868.665,
+          "customerValuePer100LeadsEur": 236059.9,
+          "meanKwp": 8.246667,
+          "batteryShare": 1,
+          "inventedNumbersSent": 201,
+          "draftsRejected": 0,
+          "offersFromFallback": 0,
+          "faults": 20,
+          "faultDetectionRate": 0.7,
+          "materialFaults": 10,
+          "materialDetectionRate": 0.8,
+          "medianDaysToDetect": 56,
+          "causeAccuracy": 0,
+          "falseAlarmsPer100": 180.8333,
+          "offlineFlaggedRate": 0,
+          "lostKwhPerFault": 244.0821,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "shading": {
+              "faults": 12,
+              "detected": 7,
+              "causeCorrect": 0,
+              "medianDays": 69
+            },
+            "soiling": {
+              "faults": 2,
+              "detected": 1,
+              "causeCorrect": 0,
+              "medianDays": 154
+            },
+            "string": {
+              "faults": 6,
+              "detected": 6,
+              "causeCorrect": 0,
+              "medianDays": 39
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "platform",
+      "label": "Rust simulation, optimiser, checked offer agent, aftercare agent",
+      "kind": "platform",
+      "mean": {
+        "leads": 400,
+        "signed": 243.5,
+        "winRate": 0.60875,
+        "revenuePer100LeadsEur": 1019114,
+        "yieldErrorPct": 4.909151,
+        "savingsBiasPct": -6.361598,
+        "brokenPromiseRate": 0.00212766,
+        "customerNpvEur": 9008.806,
+        "customerValuePer100LeadsEur": 548242.9,
+        "meanKwp": 8.551944,
+        "batteryShare": 0.6994343,
+        "inventedNumbersSent": 0,
+        "draftsRejected": 234.5,
+        "offersFromFallback": 8,
+        "faults": 52,
+        "faultDetectionRate": 0.6737589,
+        "materialFaults": 28,
+        "materialDetectionRate": 0.9115385,
+        "medianDaysToDetect": 1.25,
+        "causeAccuracy": 0.9004934,
+        "falseAlarmsPer100": 5.897501,
+        "offlineFlaggedRate": 1,
+        "lostKwhPerFault": 81.14804,
+        "engineParityMaxRelError": 8.881784e-16,
+        "faultsByKind": {
+          "outage": {
+            "faults": 18,
+            "detected": 18,
+            "causeCorrect": 18,
+            "medianDays": 0
+          },
+          "shading": {
+            "faults": 29,
+            "detected": 20,
+            "causeCorrect": 17,
+            "medianDays": 114
+          },
+          "soiling": {
+            "faults": 32,
+            "detected": 7,
+            "causeCorrect": 3,
+            "medianDays": 46
+          },
+          "string": {
+            "faults": 25,
+            "detected": 25,
+            "causeCorrect": 25,
+            "medianDays": 1
+          }
+        }
+      },
+      "perSeed": [
+        {
+          "leads": 400,
+          "signed": 235,
+          "winRate": 0.5875,
+          "revenuePer100LeadsEur": 1026146,
+          "yieldErrorPct": 3.9059,
+          "savingsBiasPct": -6.221845,
+          "brokenPromiseRate": 0.004255319,
+          "customerNpvEur": 9087.975,
+          "customerValuePer100LeadsEur": 533918.5,
+          "meanKwp": 8.94,
+          "batteryShare": 0.7361702,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 245,
+          "offersFromFallback": 8,
+          "faults": 47,
+          "faultDetectionRate": 0.6808511,
+          "materialFaults": 26,
+          "materialDetectionRate": 0.9230769,
+          "medianDaysToDetect": 0.5,
+          "causeAccuracy": 0.90625,
+          "falseAlarmsPer100": 4.255319,
+          "offlineFlaggedRate": 1,
+          "lostKwhPerFault": 72.56207,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "outage": {
+              "faults": 12,
+              "detected": 12,
+              "causeCorrect": 12,
+              "medianDays": 0
+            },
+            "shading": {
+              "faults": 12,
+              "detected": 7,
+              "causeCorrect": 6,
+              "medianDays": 33
+            },
+            "soiling": {
+              "faults": 14,
+              "detected": 4,
+              "causeCorrect": 2,
+              "medianDays": 54
+            },
+            "string": {
+              "faults": 9,
+              "detected": 9,
+              "causeCorrect": 9,
+              "medianDays": 1
+            }
+          }
+        },
+        {
+          "leads": 400,
+          "signed": 252,
+          "winRate": 0.63,
+          "revenuePer100LeadsEur": 1012081,
+          "yieldErrorPct": 5.912403,
+          "savingsBiasPct": -6.501351,
+          "brokenPromiseRate": 0,
+          "customerNpvEur": 8929.638,
+          "customerValuePer100LeadsEur": 562567.2,
+          "meanKwp": 8.163889,
+          "batteryShare": 0.6626984,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 224,
+          "offersFromFallback": 8,
+          "faults": 57,
+          "faultDetectionRate": 0.6666667,
+          "materialFaults": 30,
+          "materialDetectionRate": 0.9,
+          "medianDaysToDetect": 2,
+          "causeAccuracy": 0.8947368,
+          "falseAlarmsPer100": 7.539683,
+          "offlineFlaggedRate": 1,
+          "lostKwhPerFault": 89.73401,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "soiling": {
+              "faults": 18,
+              "detected": 3,
+              "causeCorrect": 1,
+              "medianDays": 38
+            },
+            "string": {
+              "faults": 16,
+              "detected": 16,
+              "causeCorrect": 16,
+              "medianDays": 1
+            },
+            "shading": {
+              "faults": 17,
+              "detected": 13,
+              "causeCorrect": 11,
+              "medianDays": 195
+            },
+            "outage": {
+              "faults": 6,
+              "detected": 6,
+              "causeCorrect": 6,
+              "medianDays": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "no-shading",
+      "label": "Platform without the site-visit horizon",
+      "kind": "ablation",
+      "mean": {
+        "leads": 400,
+        "signed": 248.5,
+        "winRate": 0.62125,
+        "revenuePer100LeadsEur": 1048282,
+        "yieldErrorPct": 5.514463,
+        "savingsBiasPct": -5.009814,
+        "brokenPromiseRate": 0.002057613,
+        "customerNpvEur": 9031.292,
+        "customerValuePer100LeadsEur": 560996.8,
+        "meanKwp": 8.594216,
+        "batteryShare": 0.708953,
+        "inventedNumbersSent": 0,
+        "draftsRejected": 233,
+        "offersFromFallback": 8,
+        "faults": 53,
+        "faultDetectionRate": 0.7048323,
+        "materialFaults": 29,
+        "materialDetectionRate": 0.9307049,
+        "medianDaysToDetect": 1.25,
+        "causeAccuracy": 0.9378634,
+        "falseAlarmsPer100": 19.29863,
+        "offlineFlaggedRate": 1,
+        "lostKwhPerFault": 82.09648,
+        "engineParityMaxRelError": 8.881784e-16,
+        "faultsByKind": {
+          "outage": {
+            "faults": 19,
+            "detected": 19,
+            "causeCorrect": 19,
+            "medianDays": 0
+          },
+          "string": {
+            "faults": 26,
+            "detected": 26,
+            "causeCorrect": 26,
+            "medianDays": 1
+          },
+          "shading": {
+            "faults": 29,
+            "detected": 21,
+            "causeCorrect": 18,
+            "medianDays": 110
+          },
+          "soiling": {
+            "faults": 32,
+            "detected": 9,
+            "causeCorrect": 7,
+            "medianDays": 61.25
+          }
+        }
+      },
+      "perSeed": [
+        {
+          "leads": 400,
+          "signed": 243,
+          "winRate": 0.6075,
+          "revenuePer100LeadsEur": 1064516,
+          "yieldErrorPct": 4.51669,
+          "savingsBiasPct": -4.90144,
+          "brokenPromiseRate": 0.004115226,
+          "customerNpvEur": 9083.802,
+          "customerValuePer100LeadsEur": 551841,
+          "meanKwp": 8.941975,
+          "batteryShare": 0.7407407,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 243,
+          "offersFromFallback": 8,
+          "faults": 47,
+          "faultDetectionRate": 0.6808511,
+          "materialFaults": 27,
+          "materialDetectionRate": 0.9259259,
+          "medianDaysToDetect": 0.5,
+          "causeAccuracy": 0.96875,
+          "falseAlarmsPer100": 18.51852,
+          "offlineFlaggedRate": 1,
+          "lostKwhPerFault": 77.37227,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "outage": {
+              "faults": 12,
+              "detected": 12,
+              "causeCorrect": 12,
+              "medianDays": 0
+            },
+            "string": {
+              "faults": 10,
+              "detected": 10,
+              "causeCorrect": 10,
+              "medianDays": 1
+            },
+            "shading": {
+              "faults": 11,
+              "detected": 7,
+              "causeCorrect": 6,
+              "medianDays": 33
+            },
+            "soiling": {
+              "faults": 14,
+              "detected": 3,
+              "causeCorrect": 3,
+              "medianDays": 61
+            }
+          }
+        },
+        {
+          "leads": 400,
+          "signed": 254,
+          "winRate": 0.635,
+          "revenuePer100LeadsEur": 1032048,
+          "yieldErrorPct": 6.512236,
+          "savingsBiasPct": -5.118188,
+          "brokenPromiseRate": 0,
+          "customerNpvEur": 8978.782,
+          "customerValuePer100LeadsEur": 570152.6,
+          "meanKwp": 8.246457,
+          "batteryShare": 0.6771654,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 223,
+          "offersFromFallback": 8,
+          "faults": 59,
+          "faultDetectionRate": 0.7288136,
+          "materialFaults": 31,
+          "materialDetectionRate": 0.9354839,
+          "medianDaysToDetect": 2,
+          "causeAccuracy": 0.9069767,
+          "falseAlarmsPer100": 20.07874,
+          "offlineFlaggedRate": 1,
+          "lostKwhPerFault": 86.8207,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "soiling": {
+              "faults": 18,
+              "detected": 6,
+              "causeCorrect": 4,
+              "medianDays": 61.5
+            },
+            "string": {
+              "faults": 16,
+              "detected": 16,
+              "causeCorrect": 16,
+              "medianDays": 1
+            },
+            "shading": {
+              "faults": 18,
+              "detected": 14,
+              "causeCorrect": 12,
+              "medianDays": 187
+            },
+            "outage": {
+              "faults": 7,
+              "detected": 7,
+              "causeCorrect": 7,
+              "medianDays": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "bill-only-load",
+      "label": "Platform using last year's bill, ignoring the planned heat pump and car",
+      "kind": "ablation",
+      "mean": {
+        "leads": 400,
+        "signed": 224.5,
+        "winRate": 0.56125,
+        "revenuePer100LeadsEur": 877102.5,
+        "yieldErrorPct": 4.892672,
+        "savingsBiasPct": -10.37529,
+        "brokenPromiseRate": 0,
+        "customerNpvEur": 8716.969,
+        "customerValuePer100LeadsEur": 489133.6,
+        "meanKwp": 7.980086,
+        "batteryShare": 0.7400175,
+        "inventedNumbersSent": 0,
+        "draftsRejected": 234,
+        "offersFromFallback": 8,
+        "faults": 49,
+        "faultDetectionRate": 0.6939799,
+        "materialFaults": 26.5,
+        "materialDetectionRate": 0.9245014,
+        "medianDaysToDetect": 1,
+        "causeAccuracy": 0.8975694,
+        "falseAlarmsPer100": 4.674724,
+        "offlineFlaggedRate": 1,
+        "lostKwhPerFault": 76.97211,
+        "engineParityMaxRelError": 8.881784e-16,
+        "faultsByKind": {
+          "outage": {
+            "faults": 20,
+            "detected": 20,
+            "causeCorrect": 20,
+            "medianDays": 0
+          },
+          "shading": {
+            "faults": 29,
+            "detected": 20,
+            "causeCorrect": 17,
+            "medianDays": 114
+          },
+          "soiling": {
+            "faults": 27,
+            "detected": 6,
+            "causeCorrect": 2,
+            "medianDays": 53.5
+          },
+          "string": {
+            "faults": 22,
+            "detected": 22,
+            "causeCorrect": 22,
+            "medianDays": 1
+          }
+        }
+      },
+      "perSeed": [
+        {
+          "leads": 400,
+          "signed": 221,
+          "winRate": 0.5525,
+          "revenuePer100LeadsEur": 895441.3,
+          "yieldErrorPct": 3.839839,
+          "savingsBiasPct": -10.18292,
+          "brokenPromiseRate": 0,
+          "customerNpvEur": 8838.471,
+          "customerValuePer100LeadsEur": 488325.5,
+          "meanKwp": 8.302715,
+          "batteryShare": 0.7782805,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 245,
+          "offersFromFallback": 8,
+          "faults": 46,
+          "faultDetectionRate": 0.6956522,
+          "materialFaults": 26,
+          "materialDetectionRate": 0.9230769,
+          "medianDaysToDetect": 0,
+          "causeAccuracy": 0.90625,
+          "falseAlarmsPer100": 4.524887,
+          "offlineFlaggedRate": 1,
+          "lostKwhPerFault": 68.13203,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "outage": {
+              "faults": 13,
+              "detected": 13,
+              "causeCorrect": 13,
+              "medianDays": 0
+            },
+            "shading": {
+              "faults": 12,
+              "detected": 7,
+              "causeCorrect": 6,
+              "medianDays": 33
+            },
+            "soiling": {
+              "faults": 13,
+              "detected": 4,
+              "causeCorrect": 2,
+              "medianDays": 54
+            },
+            "string": {
+              "faults": 8,
+              "detected": 8,
+              "causeCorrect": 8,
+              "medianDays": 1
+            }
+          }
+        },
+        {
+          "leads": 400,
+          "signed": 228,
+          "winRate": 0.57,
+          "revenuePer100LeadsEur": 858763.8,
+          "yieldErrorPct": 5.945506,
+          "savingsBiasPct": -10.56766,
+          "brokenPromiseRate": 0,
+          "customerNpvEur": 8595.468,
+          "customerValuePer100LeadsEur": 489941.7,
+          "meanKwp": 7.657456,
+          "batteryShare": 0.7017544,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 223,
+          "offersFromFallback": 8,
+          "faults": 52,
+          "faultDetectionRate": 0.6923077,
+          "materialFaults": 27,
+          "materialDetectionRate": 0.9259259,
+          "medianDaysToDetect": 2,
+          "causeAccuracy": 0.8888889,
+          "falseAlarmsPer100": 4.824561,
+          "offlineFlaggedRate": 1,
+          "lostKwhPerFault": 85.8122,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "soiling": {
+              "faults": 14,
+              "detected": 2,
+              "causeCorrect": 0,
+              "medianDays": 53
+            },
+            "string": {
+              "faults": 14,
+              "detected": 14,
+              "causeCorrect": 14,
+              "medianDays": 1
+            },
+            "shading": {
+              "faults": 17,
+              "detected": 13,
+              "causeCorrect": 11,
+              "medianDays": 195
+            },
+            "outage": {
+              "faults": 7,
+              "detected": 7,
+              "causeCorrect": 7,
+              "medianDays": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "monthly-balance",
+      "label": "Platform with a monthly instead of hourly energy balance",
+      "kind": "ablation",
+      "mean": {
+        "leads": 400,
+        "signed": 361.5,
+        "winRate": 0.90375,
+        "revenuePer100LeadsEur": 1277509,
+        "yieldErrorPct": 4.884879,
+        "savingsBiasPct": 33.59811,
+        "brokenPromiseRate": 0.9128419,
+        "customerNpvEur": 7703.041,
+        "customerValuePer100LeadsEur": 696150.5,
+        "meanKwp": 9.3887,
+        "batteryShare": 0,
+        "inventedNumbersSent": 0,
+        "draftsRejected": 238,
+        "offersFromFallback": 8,
+        "faults": 84,
+        "faultDetectionRate": 0.6857955,
+        "materialFaults": 50.5,
+        "materialDetectionRate": 0.9505882,
+        "medianDaysToDetect": 0.5,
+        "causeAccuracy": 0.8957955,
+        "falseAlarmsPer100": 4.149386,
+        "offlineFlaggedRate": 1,
+        "lostKwhPerFault": 79.92973,
+        "engineParityMaxRelError": 8.881784e-16,
+        "faultsByKind": {
+          "shading": {
+            "faults": 42,
+            "detected": 23,
+            "causeCorrect": 18,
+            "medianDays": 85.75
+          },
+          "outage": {
+            "faults": 42,
+            "detected": 42,
+            "causeCorrect": 42,
+            "medianDays": 0
+          },
+          "soiling": {
+            "faults": 45,
+            "detected": 11,
+            "causeCorrect": 4,
+            "medianDays": 43.75
+          },
+          "string": {
+            "faults": 39,
+            "detected": 39,
+            "causeCorrect": 39,
+            "medianDays": 1
+          }
+        }
+      },
+      "perSeed": [
+        {
+          "leads": 400,
+          "signed": 361,
+          "winRate": 0.9025,
+          "revenuePer100LeadsEur": 1290444,
+          "yieldErrorPct": 4.023637,
+          "savingsBiasPct": 32.84319,
+          "brokenPromiseRate": 0.8975069,
+          "customerNpvEur": 7797.949,
+          "customerValuePer100LeadsEur": 703764.9,
+          "meanKwp": 9.518837,
+          "batteryShare": 0,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 247,
+          "offersFromFallback": 8,
+          "faults": 80,
+          "faultDetectionRate": 0.7125,
+          "materialFaults": 50,
+          "materialDetectionRate": 0.96,
+          "medianDaysToDetect": 0,
+          "causeAccuracy": 0.9122807,
+          "falseAlarmsPer100": 4.155125,
+          "offlineFlaggedRate": 1,
+          "lostKwhPerFault": 71.74274,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "shading": {
+              "faults": 17,
+              "detected": 9,
+              "causeCorrect": 7,
+              "medianDays": 33
+            },
+            "outage": {
+              "faults": 26,
+              "detected": 26,
+              "causeCorrect": 26,
+              "medianDays": 0
+            },
+            "soiling": {
+              "faults": 20,
+              "detected": 5,
+              "causeCorrect": 2,
+              "medianDays": 51
+            },
+            "string": {
+              "faults": 17,
+              "detected": 17,
+              "causeCorrect": 17,
+              "medianDays": 1
+            }
+          }
+        },
+        {
+          "leads": 400,
+          "signed": 362,
+          "winRate": 0.905,
+          "revenuePer100LeadsEur": 1264575,
+          "yieldErrorPct": 5.74612,
+          "savingsBiasPct": 34.35303,
+          "brokenPromiseRate": 0.9281768,
+          "customerNpvEur": 7608.134,
+          "customerValuePer100LeadsEur": 688536.1,
+          "meanKwp": 9.258564,
+          "batteryShare": 0,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 229,
+          "offersFromFallback": 8,
+          "faults": 88,
+          "faultDetectionRate": 0.6590909,
+          "materialFaults": 51,
+          "materialDetectionRate": 0.9411765,
+          "medianDaysToDetect": 1,
+          "causeAccuracy": 0.8793103,
+          "falseAlarmsPer100": 4.143646,
+          "offlineFlaggedRate": 1,
+          "lostKwhPerFault": 88.11673,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "soiling": {
+              "faults": 25,
+              "detected": 6,
+              "causeCorrect": 2,
+              "medianDays": 36.5
+            },
+            "string": {
+              "faults": 22,
+              "detected": 22,
+              "causeCorrect": 22,
+              "medianDays": 1
+            },
+            "shading": {
+              "faults": 25,
+              "detected": 14,
+              "causeCorrect": 11,
+              "medianDays": 138.5
+            },
+            "outage": {
+              "faults": 16,
+              "detected": 16,
+              "causeCorrect": 16,
+              "medianDays": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "no-optimiser",
+      "label": "Platform filling every roof face with a 1 kWh/kWp battery",
+      "kind": "ablation",
+      "mean": {
+        "leads": 400,
+        "signed": 109,
+        "winRate": 0.2725,
+        "revenuePer100LeadsEur": 520086.9,
+        "yieldErrorPct": 4.916112,
+        "savingsBiasPct": -6.586809,
+        "brokenPromiseRate": 0.005,
+        "customerNpvEur": 8855.709,
+        "customerValuePer100LeadsEur": 241244.7,
+        "meanKwp": 8.374619,
+        "batteryShare": 1,
+        "inventedNumbersSent": 0,
+        "draftsRejected": 236,
+        "offersFromFallback": 8,
+        "faults": 20,
+        "faultDetectionRate": 0.6704261,
+        "materialFaults": 11,
+        "materialDetectionRate": 0.8636364,
+        "medianDaysToDetect": 20.25,
+        "causeAccuracy": 0.9375,
+        "falseAlarmsPer100": 2.771186,
+        "offlineFlaggedRate": 1,
+        "lostKwhPerFault": 73.9263,
+        "engineParityMaxRelError": 8.881784e-16,
+        "faultsByKind": {
+          "outage": {
+            "faults": 7,
+            "detected": 7,
+            "causeCorrect": 7,
+            "medianDays": 0
+          },
+          "shading": {
+            "faults": 18,
+            "detected": 10,
+            "causeCorrect": 9,
+            "medianDays": 118.25
+          },
+          "soiling": {
+            "faults": 7,
+            "detected": 2,
+            "causeCorrect": 1,
+            "medianDays": 64
+          },
+          "string": {
+            "faults": 8,
+            "detected": 8,
+            "causeCorrect": 8,
+            "medianDays": 1
+          }
+        }
+      },
+      "perSeed": [
+        {
+          "leads": 400,
+          "signed": 100,
+          "winRate": 0.25,
+          "revenuePer100LeadsEur": 492983.7,
+          "yieldErrorPct": 3.68861,
+          "savingsBiasPct": -6.296822,
+          "brokenPromiseRate": 0.01,
+          "customerNpvEur": 8888.34,
+          "customerValuePer100LeadsEur": 222208.5,
+          "meanKwp": 8.695,
+          "batteryShare": 1,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 245,
+          "offersFromFallback": 8,
+          "faults": 19,
+          "faultDetectionRate": 0.5789474,
+          "materialFaults": 11,
+          "materialDetectionRate": 0.8181818,
+          "medianDaysToDetect": 0,
+          "causeAccuracy": 1,
+          "falseAlarmsPer100": 3,
+          "offlineFlaggedRate": 1,
+          "lostKwhPerFault": 76.20514,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "outage": {
+              "faults": 7,
+              "detected": 7,
+              "causeCorrect": 7,
+              "medianDays": 0
+            },
+            "shading": {
+              "faults": 6,
+              "detected": 2,
+              "causeCorrect": 2,
+              "medianDays": 38
+            },
+            "soiling": {
+              "faults": 5,
+              "detected": 1,
+              "causeCorrect": 1,
+              "medianDays": 47
+            },
+            "string": {
+              "faults": 1,
+              "detected": 1,
+              "causeCorrect": 1,
+              "medianDays": 1
+            }
+          }
+        },
+        {
+          "leads": 400,
+          "signed": 118,
+          "winRate": 0.295,
+          "revenuePer100LeadsEur": 547190,
+          "yieldErrorPct": 6.143613,
+          "savingsBiasPct": -6.876795,
+          "brokenPromiseRate": 0,
+          "customerNpvEur": 8823.079,
+          "customerValuePer100LeadsEur": 260280.8,
+          "meanKwp": 8.054237,
+          "batteryShare": 1,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 227,
+          "offersFromFallback": 8,
+          "faults": 21,
+          "faultDetectionRate": 0.7619048,
+          "materialFaults": 11,
+          "materialDetectionRate": 0.9090909,
+          "medianDaysToDetect": 40.5,
+          "causeAccuracy": 0.875,
+          "falseAlarmsPer100": 2.542373,
+          "offlineFlaggedRate": 1,
+          "lostKwhPerFault": 71.64746,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "string": {
+              "faults": 7,
+              "detected": 7,
+              "causeCorrect": 7,
+              "medianDays": 1
+            },
+            "shading": {
+              "faults": 12,
+              "detected": 8,
+              "causeCorrect": 7,
+              "medianDays": 198.5
+            },
+            "soiling": {
+              "faults": 2,
+              "detected": 1,
+              "causeCorrect": 0,
+              "medianDays": 81
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "promise-p50",
+      "label": "Platform promising the typical year (no haircut)",
+      "kind": "ablation",
+      "mean": {
+        "leads": 400,
+        "signed": 271,
+        "winRate": 0.6775,
+        "revenuePer100LeadsEur": 1138132,
+        "yieldErrorPct": 4.920841,
+        "savingsBiasPct": -0.3670229,
+        "brokenPromiseRate": 0.01101805,
+        "customerNpvEur": 8856.414,
+        "customerValuePer100LeadsEur": 600029,
+        "meanKwp": 8.556716,
+        "batteryShare": 0.705223,
+        "inventedNumbersSent": 0,
+        "draftsRejected": 234.5,
+        "offersFromFallback": 8,
+        "faults": 58,
+        "faultDetectionRate": 0.6918239,
+        "materialFaults": 33.5,
+        "materialDetectionRate": 0.9116071,
+        "medianDaysToDetect": 0.5,
+        "causeAccuracy": 0.9129073,
+        "falseAlarmsPer100": 5.514471,
+        "offlineFlaggedRate": 1,
+        "lostKwhPerFault": 81.77189,
+        "engineParityMaxRelError": 8.881784e-16,
+        "faultsByKind": {
+          "outage": {
+            "faults": 25,
+            "detected": 25,
+            "causeCorrect": 25,
+            "medianDays": 0
+          },
+          "shading": {
+            "faults": 30,
+            "detected": 20,
+            "causeCorrect": 17,
+            "medianDays": 114
+          },
+          "string": {
+            "faults": 28,
+            "detected": 28,
+            "causeCorrect": 28,
+            "medianDays": 1
+          },
+          "soiling": {
+            "faults": 33,
+            "detected": 7,
+            "causeCorrect": 3,
+            "medianDays": 46
+          }
+        }
+      },
+      "perSeed": [
+        {
+          "leads": 400,
+          "signed": 267,
+          "winRate": 0.6675,
+          "revenuePer100LeadsEur": 1157718,
+          "yieldErrorPct": 3.868016,
+          "savingsBiasPct": -0.3552643,
+          "brokenPromiseRate": 0.007490637,
+          "customerNpvEur": 8849.408,
+          "customerValuePer100LeadsEur": 590698,
+          "meanKwp": 8.836704,
+          "batteryShare": 0.7340824,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 245,
+          "offersFromFallback": 8,
+          "faults": 53,
+          "faultDetectionRate": 0.7169811,
+          "materialFaults": 32,
+          "materialDetectionRate": 0.9375,
+          "medianDaysToDetect": 0,
+          "causeAccuracy": 0.9210526,
+          "falseAlarmsPer100": 4.11985,
+          "offlineFlaggedRate": 1,
+          "lostKwhPerFault": 73.15532,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "outage": {
+              "faults": 15,
+              "detected": 15,
+              "causeCorrect": 15,
+              "medianDays": 0
+            },
+            "shading": {
+              "faults": 12,
+              "detected": 7,
+              "causeCorrect": 6,
+              "medianDays": 33
+            },
+            "string": {
+              "faults": 12,
+              "detected": 12,
+              "causeCorrect": 12,
+              "medianDays": 1
+            },
+            "soiling": {
+              "faults": 14,
+              "detected": 4,
+              "causeCorrect": 2,
+              "medianDays": 54
+            }
+          }
+        },
+        {
+          "leads": 400,
+          "signed": 275,
+          "winRate": 0.6875,
+          "revenuePer100LeadsEur": 1118546,
+          "yieldErrorPct": 5.973666,
+          "savingsBiasPct": -0.3787815,
+          "brokenPromiseRate": 0.01454545,
+          "customerNpvEur": 8863.42,
+          "customerValuePer100LeadsEur": 609360.1,
+          "meanKwp": 8.276727,
+          "batteryShare": 0.6763636,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 224,
+          "offersFromFallback": 8,
+          "faults": 63,
+          "faultDetectionRate": 0.6666667,
+          "materialFaults": 35,
+          "materialDetectionRate": 0.8857143,
+          "medianDaysToDetect": 1,
+          "causeAccuracy": 0.9047619,
+          "falseAlarmsPer100": 6.909091,
+          "offlineFlaggedRate": 1,
+          "lostKwhPerFault": 90.38846,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "soiling": {
+              "faults": 19,
+              "detected": 3,
+              "causeCorrect": 1,
+              "medianDays": 38
+            },
+            "string": {
+              "faults": 16,
+              "detected": 16,
+              "causeCorrect": 16,
+              "medianDays": 1
+            },
+            "shading": {
+              "faults": 18,
+              "detected": 13,
+              "causeCorrect": 11,
+              "medianDays": 195
+            },
+            "outage": {
+              "faults": 10,
+              "detected": 10,
+              "causeCorrect": 10,
+              "medianDays": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "unchecked-agent",
+      "label": "Platform with the offer agent's numbers unchecked",
+      "kind": "ablation",
+      "mean": {
+        "leads": 400,
+        "signed": 243.5,
+        "winRate": 0.60875,
+        "revenuePer100LeadsEur": 1019114,
+        "yieldErrorPct": 4.909151,
+        "savingsBiasPct": -6.361598,
+        "brokenPromiseRate": 0.00212766,
+        "customerNpvEur": 9008.806,
+        "customerValuePer100LeadsEur": 548242.9,
+        "meanKwp": 8.551944,
+        "batteryShare": 0.6994343,
+        "inventedNumbersSent": 210,
+        "draftsRejected": 0,
+        "offersFromFallback": 0,
+        "faults": 52,
+        "faultDetectionRate": 0.6737589,
+        "materialFaults": 28,
+        "materialDetectionRate": 0.9115385,
+        "medianDaysToDetect": 1.25,
+        "causeAccuracy": 0.9004934,
+        "falseAlarmsPer100": 5.897501,
+        "offlineFlaggedRate": 1,
+        "lostKwhPerFault": 81.14804,
+        "engineParityMaxRelError": 8.881784e-16,
+        "faultsByKind": {
+          "outage": {
+            "faults": 18,
+            "detected": 18,
+            "causeCorrect": 18,
+            "medianDays": 0
+          },
+          "shading": {
+            "faults": 29,
+            "detected": 20,
+            "causeCorrect": 17,
+            "medianDays": 114
+          },
+          "soiling": {
+            "faults": 32,
+            "detected": 7,
+            "causeCorrect": 3,
+            "medianDays": 46
+          },
+          "string": {
+            "faults": 25,
+            "detected": 25,
+            "causeCorrect": 25,
+            "medianDays": 1
+          }
+        }
+      },
+      "perSeed": [
+        {
+          "leads": 400,
+          "signed": 235,
+          "winRate": 0.5875,
+          "revenuePer100LeadsEur": 1026146,
+          "yieldErrorPct": 3.9059,
+          "savingsBiasPct": -6.221845,
+          "brokenPromiseRate": 0.004255319,
+          "customerNpvEur": 9087.975,
+          "customerValuePer100LeadsEur": 533918.5,
+          "meanKwp": 8.94,
+          "batteryShare": 0.7361702,
+          "inventedNumbersSent": 212,
+          "draftsRejected": 0,
+          "offersFromFallback": 0,
+          "faults": 47,
+          "faultDetectionRate": 0.6808511,
+          "materialFaults": 26,
+          "materialDetectionRate": 0.9230769,
+          "medianDaysToDetect": 0.5,
+          "causeAccuracy": 0.90625,
+          "falseAlarmsPer100": 4.255319,
+          "offlineFlaggedRate": 1,
+          "lostKwhPerFault": 72.56207,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "outage": {
+              "faults": 12,
+              "detected": 12,
+              "causeCorrect": 12,
+              "medianDays": 0
+            },
+            "shading": {
+              "faults": 12,
+              "detected": 7,
+              "causeCorrect": 6,
+              "medianDays": 33
+            },
+            "soiling": {
+              "faults": 14,
+              "detected": 4,
+              "causeCorrect": 2,
+              "medianDays": 54
+            },
+            "string": {
+              "faults": 9,
+              "detected": 9,
+              "causeCorrect": 9,
+              "medianDays": 1
+            }
+          }
+        },
+        {
+          "leads": 400,
+          "signed": 252,
+          "winRate": 0.63,
+          "revenuePer100LeadsEur": 1012081,
+          "yieldErrorPct": 5.912403,
+          "savingsBiasPct": -6.501351,
+          "brokenPromiseRate": 0,
+          "customerNpvEur": 8929.638,
+          "customerValuePer100LeadsEur": 562567.2,
+          "meanKwp": 8.163889,
+          "batteryShare": 0.6626984,
+          "inventedNumbersSent": 208,
+          "draftsRejected": 0,
+          "offersFromFallback": 0,
+          "faults": 57,
+          "faultDetectionRate": 0.6666667,
+          "materialFaults": 30,
+          "materialDetectionRate": 0.9,
+          "medianDaysToDetect": 2,
+          "causeAccuracy": 0.8947368,
+          "falseAlarmsPer100": 7.539683,
+          "offlineFlaggedRate": 1,
+          "lostKwhPerFault": 89.73401,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "soiling": {
+              "faults": 18,
+              "detected": 3,
+              "causeCorrect": 1,
+              "medianDays": 38
+            },
+            "string": {
+              "faults": 16,
+              "detected": 16,
+              "causeCorrect": 16,
+              "medianDays": 1
+            },
+            "shading": {
+              "faults": 17,
+              "detected": 13,
+              "causeCorrect": 11,
+              "medianDays": 195
+            },
+            "outage": {
+              "faults": 6,
+              "detected": 6,
+              "causeCorrect": 6,
+              "medianDays": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "threshold-aftercare",
+      "label": "Platform with month-end threshold alarms",
+      "kind": "ablation",
+      "mean": {
+        "leads": 400,
+        "signed": 243.5,
+        "winRate": 0.60875,
+        "revenuePer100LeadsEur": 1019114,
+        "yieldErrorPct": 4.909151,
+        "savingsBiasPct": -6.361598,
+        "brokenPromiseRate": 0.00212766,
+        "customerNpvEur": 9008.806,
+        "customerValuePer100LeadsEur": 548242.9,
+        "meanKwp": 8.551944,
+        "batteryShare": 0.6994343,
+        "inventedNumbersSent": 0,
+        "draftsRejected": 234.5,
+        "offersFromFallback": 8,
+        "faults": 52,
+        "faultDetectionRate": 0.4007092,
+        "materialFaults": 28,
+        "materialDetectionRate": 0.7012821,
+        "medianDaysToDetect": 31.25,
+        "causeAccuracy": 0,
+        "falseAlarmsPer100": 7.331982,
+        "offlineFlaggedRate": 0,
+        "lostKwhPerFault": 310.4806,
+        "engineParityMaxRelError": 8.881784e-16,
+        "faultsByKind": {
+          "outage": {
+            "faults": 18,
+            "detected": 18,
+            "causeCorrect": 0,
+            "medianDays": 23.75
+          },
+          "shading": {
+            "faults": 29,
+            "detected": 3,
+            "causeCorrect": 0,
+            "medianDays": 18
+          },
+          "soiling": {
+            "faults": 32,
+            "detected": 0,
+            "causeCorrect": 0,
+            "medianDays": 0
+          },
+          "string": {
+            "faults": 25,
+            "detected": 20,
+            "causeCorrect": 0,
+            "medianDays": 35
+          }
+        }
+      },
+      "perSeed": [
+        {
+          "leads": 400,
+          "signed": 235,
+          "winRate": 0.5875,
+          "revenuePer100LeadsEur": 1026146,
+          "yieldErrorPct": 3.9059,
+          "savingsBiasPct": -6.221845,
+          "brokenPromiseRate": 0.004255319,
+          "customerNpvEur": 9087.975,
+          "customerValuePer100LeadsEur": 533918.5,
+          "meanKwp": 8.94,
+          "batteryShare": 0.7361702,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 245,
+          "offersFromFallback": 8,
+          "faults": 47,
+          "faultDetectionRate": 0.4680851,
+          "materialFaults": 26,
+          "materialDetectionRate": 0.7692308,
+          "medianDaysToDetect": 31.5,
+          "causeAccuracy": 0,
+          "falseAlarmsPer100": 11.48936,
+          "offlineFlaggedRate": 0,
+          "lostKwhPerFault": 334.811,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "outage": {
+              "faults": 12,
+              "detected": 12,
+              "causeCorrect": 0,
+              "medianDays": 24.5
+            },
+            "shading": {
+              "faults": 12,
+              "detected": 3,
+              "causeCorrect": 0,
+              "medianDays": 36
+            },
+            "soiling": {
+              "faults": 14,
+              "detected": 0,
+              "causeCorrect": 0,
+              "medianDays": null
+            },
+            "string": {
+              "faults": 9,
+              "detected": 7,
+              "causeCorrect": 0,
+              "medianDays": 37
+            }
+          }
+        },
+        {
+          "leads": 400,
+          "signed": 252,
+          "winRate": 0.63,
+          "revenuePer100LeadsEur": 1012081,
+          "yieldErrorPct": 5.912403,
+          "savingsBiasPct": -6.501351,
+          "brokenPromiseRate": 0,
+          "customerNpvEur": 8929.638,
+          "customerValuePer100LeadsEur": 562567.2,
+          "meanKwp": 8.163889,
+          "batteryShare": 0.6626984,
+          "inventedNumbersSent": 0,
+          "draftsRejected": 224,
+          "offersFromFallback": 8,
+          "faults": 57,
+          "faultDetectionRate": 0.3333333,
+          "materialFaults": 30,
+          "materialDetectionRate": 0.6333333,
+          "medianDaysToDetect": 31,
+          "causeAccuracy": 0,
+          "falseAlarmsPer100": 3.174603,
+          "offlineFlaggedRate": 0,
+          "lostKwhPerFault": 286.1502,
+          "engineParityMaxRelError": 8.881784e-16,
+          "faultsByKind": {
+            "soiling": {
+              "faults": 18,
+              "detected": 0,
+              "causeCorrect": 0,
+              "medianDays": null
+            },
+            "string": {
+              "faults": 16,
+              "detected": 13,
+              "causeCorrect": 0,
+              "medianDays": 33
+            },
+            "shading": {
+              "faults": 17,
+              "detected": 0,
+              "causeCorrect": 0,
+              "medianDays": null
+            },
+            "outage": {
+              "faults": 6,
+              "detected": 6,
+              "causeCorrect": 0,
+              "medianDays": 23
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "id": "yield-error",
+      "label": "Mean error of the expected annual yield, %",
+      "value": 4.909151,
+      "limit": "≤ 6",
+      "pass": true
+    },
+    {
+      "id": "broken-promises",
+      "label": "Customers whose first-year savings fall below 85% of the promise",
+      "value": 0.00212766,
+      "limit": "≤ 0.05",
+      "pass": true
+    },
+    {
+      "id": "broken-vs-status-quo",
+      "label": "Broken promises as a share of the spreadsheet's",
+      "value": 0.00212766,
+      "limit": "≤ 0.25 × spreadsheet (0.0975)",
+      "pass": true
+    },
+    {
+      "id": "invented-numbers",
+      "label": "Invented numbers that reached a customer",
+      "value": 0,
+      "limit": "≤ 0",
+      "pass": true
+    },
+    {
+      "id": "customer-value",
+      "label": "Customers' realised 20-year value per 100 leads, above the spreadsheet",
+      "value": 548242.9,
+      "limit": "> spreadsheet (229,362)",
+      "pass": true
+    },
+    {
+      "id": "installer-revenue",
+      "label": "Installer revenue per 100 leads, above the spreadsheet",
+      "value": 1019114,
+      "limit": "> spreadsheet (540,546)",
+      "pass": true
+    },
+    {
+      "id": "material-faults",
+      "label": "Material faults found within the year",
+      "value": 0.9115385,
+      "limit": "≥ 0.9",
+      "pass": true
+    },
+    {
+      "id": "days-to-detect",
+      "label": "Median days from fault to alarm",
+      "value": 1.25,
+      "limit": "≤ 7",
+      "pass": true
+    },
+    {
+      "id": "cause",
+      "label": "Alarms that name the right cause",
+      "value": 0.9004934,
+      "limit": "≥ 0.75",
+      "pass": true
+    },
+    {
+      "id": "false-alarms",
+      "label": "False alarms per 100 systems and year",
+      "value": 5.897501,
+      "limit": "≤ 5",
+      "pass": false
+    },
+    {
+      "id": "parity",
+      "label": "Rust engine against the TypeScript reference, largest relative difference",
+      "value": 8.881784e-16,
+      "limit": "≤ 1e-9",
+      "pass": true
+    }
+  ]
+}

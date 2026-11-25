@@ -1,0 +1,16 @@
+{
+  "machine": "Intel(R) Xeon(R) Processor @ 2.10GHz, 2 cores, Node v22.23.4",
+  "faceProfileMs": {
+    "rust": 0.8183567,
+    "reference": 1.498952
+  },
+  "balanceMs": {
+    "rust": 0.08853689,
+    "reference": 0.1911285
+  },
+  "planLeadMs": {
+    "rust": 25.44111,
+    "reference": 37.19625,
+    "candidates": 125
+  }
+}

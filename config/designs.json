@@ -1,0 +1,18 @@
+{
+  "_doc": "Each design is a set of product choices. Every design meets the same households, weather and faults (same luck).",
+  "designs": [
+    { "id": "spreadsheet", "label": "Spreadsheet rules of thumb (status quo)", "kind": "status-quo",
+      "sizing": "rules", "energy": "rules", "shading": false, "load": "bill", "promise": "p50", "offer": "template", "aftercare": "threshold" },
+    { "id": "model-alone", "label": "A model sizes and writes the offer alone", "kind": "model-alone",
+      "sizing": "rules", "energy": "model-guess", "shading": false, "load": "bill", "promise": "p50", "offer": "agent-unchecked", "aftercare": "threshold" },
+    { "id": "platform", "label": "Rust simulation, optimiser, checked offer agent, aftercare agent", "kind": "platform",
+      "sizing": "optimiser", "energy": "hourly", "shading": true, "load": "planned", "promise": "haircut", "offer": "agent-checked", "aftercare": "normalized" },
+    { "id": "no-shading", "label": "Platform without the site-visit horizon", "kind": "ablation", "base": "platform", "shading": false },
+    { "id": "bill-only-load", "label": "Platform using last year's bill, ignoring the planned heat pump and car", "kind": "ablation", "base": "platform", "load": "bill" },
+    { "id": "monthly-balance", "label": "Platform with a monthly instead of hourly energy balance", "kind": "ablation", "base": "platform", "energy": "monthly" },
+    { "id": "no-optimiser", "label": "Platform filling every roof face with a 1 kWh/kWp battery", "kind": "ablation", "base": "platform", "sizing": "fill-roof" },
+    { "id": "promise-p50", "label": "Platform promising the typical year (no haircut)", "kind": "ablation", "base": "platform", "promise": "p50" },
+    { "id": "unchecked-agent", "label": "Platform with the offer agent's numbers unchecked", "kind": "ablation", "base": "platform", "offer": "agent-unchecked" },
+    { "id": "threshold-aftercare", "label": "Platform with month-end threshold alarms", "kind": "ablation", "base": "platform", "aftercare": "threshold" }
+  ]
+}

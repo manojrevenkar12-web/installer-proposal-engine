@@ -1,0 +1,21 @@
+{
+  "name": "installer-proposal-engine",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Proposals for solar, battery and heat-pump installers that keep their promises: a Rust simulation, an offer agent whose numbers are checked, and an aftercare agent.",
+  "engines": { "node": ">=22.18" },
+  "workspaces": ["packages/*", "lab", "apps/*"],
+  "scripts": {
+    "build:native": "node scripts/build-native.ts",
+    "test": "node --test --test-concurrency=1 \"packages/*/test/*.test.ts\" \"lab/test/*.test.ts\" \"apps/api/test/*.test.ts\"",
+    "typecheck": "tsc -p tsconfig.json",
+    "lab": "node lab/src/cli.ts",
+    "api": "node apps/api/src/server.ts",
+    "web": "npm run dev -w @ipe/web"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "typescript": "~5.9.3"
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "_doc": "The simulated world: households, roofs, weather, behaviour and faults. Only lab/src/world reads this file; the product never does.",
+  "households": 400,
+  "regions": [
+    {
+      "name": "Hamburg",
+      "lat": 53.55,
+      "lon": 10.0,
+      "clearness": 0.455,
+      "tempMean": 9.6,
+      "tempAmplitude": 8.4,
+      "weight": 0.18
+    },
+    {
+      "name": "Berlin",
+      "lat": 52.52,
+      "lon": 13.4,
+      "clearness": 0.485,
+      "tempMean": 10.1,
+      "tempAmplitude": 9.6,
+      "weight": 0.22
+    },
+    {
+      "name": "Köln",
+      "lat": 50.94,
+      "lon": 6.96,
+      "clearness": 0.5,
+      "tempMean": 10.6,
+      "tempAmplitude": 8.0,
+      "weight": 0.2
+    },
+    {
+      "name": "München",
+      "lat": 48.14,
+      "lon": 11.58,
+      "clearness": 0.545,
+      "tempMean": 9.1,
+      "tempAmplitude": 9.4,
+      "weight": 0.22
+    },
+    {
+      "name": "Freiburg",
+      "lat": 47.99,
+      "lon": 7.85,
+      "clearness": 0.54,
+      "tempMean": 11.2,
+      "tempAmplitude": 9.0,
+      "weight": 0.18
+    }
+  ],
+  "weather": {
+    "dailyCloudPersistence": 0.55,
+    "clearDayIndex": 0.72,
+    "cloudyDayIndex": 0.22,
+    "regionYearSd": 0.02,
+    "siteJitterDeg": 0.6,
+    "rainyDayIndex": 0.3
+  },
+  "roof": {
+    "faces": [
+      [
+        1,
+        0.35
+      ],
+      [
+        2,
+        0.5
+      ],
+      [
+        3,
+        0.15
+      ]
+    ],
+    "areaM2": [
+      14,
+      48
+    ],
+    "tiltDeg": [
+      18,
+      45
+    ],
+    "mainAzimuthSd": 55,
+    "obstacleProbability": 0.45,
+    "obstacleHeightDeg": [
+      6,
+      32
+    ],
+    "obstacleWidthDeg": [
+      20,
+      90
+    ],
+    "backgroundHorizonDeg": [
+      0,
+      4
+    ],
+    "siteVisitErrorDeg": 3
+  },
+  "consumption": {
+    "baseKwh": [
+      2200,
+      6500
+    ],
+    "billErrorSd": 0.08,
+    "homeOfficeProbability": 0.3,
+    "heatPumpProbability": 0.35,
+    "livingAreaM2": [
+      95,
+      230
+    ],
+    "buildingYear": [
+      1955,
+      2020
+    ],
+    "heatDemandKwhPerM2ByAge": [
+      [
+        1978,
+        195
+      ],
+      [
+        1995,
+        140
+      ],
+      [
+        2009,
+        95
+      ],
+      [
+        2100,
+        50
+      ]
+    ],
+    "heatDemandSpread": 0.25,
+    "hotWaterKwhPerYear": [
+      1800,
+      3200
+    ],
+    "heatingLimitC": 15.5,
+    "copAt7C": 3.2,
+    "copSlopePerK": 0.085,
+    "evProbability": 0.3,
+    "evKmPerYear": [
+      7000,
+      22000
+    ],
+    "evKwhPerKm": 0.19,
+    "evHomeShare": [
+      0.6,
+      0.95
+    ]
+  },
+  "tariff": {
+    "gridEurPerKwh": [
+      0.31,
+      0.42
+    ],
+    "feedInEurPerKwh": 0.0786,
+    "feedInAbove10KwpEurPerKwh": 0.068
+  },
+  "customer": {
+    "paybackToleranceYears": [
+      9,
+      17
+    ],
+    "decisionSoftnessYears": 1.6,
+    "budgetEur": [
+      12000,
+      42000
+    ],
+    "complaintBelowShare": 0.85
+  },
+  "faults": {
+    "inverterOutage": {
+      "probability": 0.05
+    },
+    "stringFault": {
+      "probability": 0.06,
+      "lossShare": [
+        0.3,
+        0.55
+      ]
+    },
+    "newShading": {
+      "probability": 0.05,
+      "heightDeg": [
+        12,
+        30
+      ],
+      "widthDeg": [
+        30,
+        70
+      ]
+    },
+    "soiling": {
+      "probability": 0.08,
+      "lossPerDay": [
+        0.002,
+        0.005
+      ],
+      "rainCleans": 0.6
+    },
+    "monitoringDropout": {
+      "probability": 0.15,
+      "days": [
+        2,
+        9
+      ]
+    },
+    "repairDays": {
+      "outage": 3,
+      "string": 4,
+      "shading": 14,
+      "soiling": 2
+    },
+    "satelliteErrorSd": 0.05,
+    "earliestDay": 40,
+    "diagnosisDaysWithoutCause": 7
+  },
+  "system": {
+    "losses": [
+      0.12,
+      0.17
+    ]
+  },
+  "economics": {
+    "years": 20,
+    "discountRate": 0.03,
+    "priceEscalation": 0.02,
+    "degradationPerYear": 0.005
+  },
+  "_calibration": "Region clearness is set so the mean of the simulated years matches long-term DWD global irradiance (about 1,000 kWh/m² in Hamburg to 1,200 in Freiburg); year-to-year spread is about 5%."
+}

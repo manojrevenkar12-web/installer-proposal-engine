@@ -1,0 +1,123 @@
+// Installer proposals: projects with their roof, versioned proposals, monitoring and alarms.
+// Every row belongs to a company (tenant); the API scopes every query by the caller's company.
+
+generator client {
+  provider            = "prisma-client"
+  output              = "../src/generated/prisma"
+  moduleFormat        = "esm"
+  importFileExtension = "ts"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ProjectStatus {
+  LEAD
+  PLANNED
+  OFFERED
+  SIGNED
+  INSTALLED
+}
+
+enum ProposalStatus {
+  DRAFT
+  SENT
+  ACCEPTED
+  SUPERSEDED
+}
+
+model Company {
+  id         String    @id @default(cuid())
+  name       String
+  apiKeyHash String    @unique
+  createdAt  DateTime  @default(now())
+  projects   Project[]
+}
+
+model Project {
+  id                   String          @id @default(cuid())
+  companyId            String
+  company              Company         @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  customerName         String
+  latDeg               Float
+  lonDeg               Float
+  statedConsumptionKwh Int
+  heatPumpAreaM2       Int?
+  heatPumpBuildingYear Int?
+  evKmPerYear          Int?
+  budgetEur            Int?
+  status               ProjectStatus   @default(LEAD)
+  createdAt            DateTime        @default(now())
+  updatedAt            DateTime        @updatedAt
+  faces                RoofFace[]
+  proposals            Proposal[]
+  days                 MonitoringDay[]
+  alarms               Alarm[]
+
+  @@index([companyId, createdAt])
+}
+
+model RoofFace {
+  id         String  @id @default(cuid())
+  projectId  String
+  project    Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  position   Int
+  azimuthDeg Float
+  tiltDeg    Float
+  areaM2     Float
+  horizonDeg Float[]
+
+  @@unique([projectId, position])
+}
+
+model Proposal {
+  id                 String         @id @default(cuid())
+  projectId          String
+  project            Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  version            Int
+  idempotencyKey     String
+  kwp                Float
+  batteryKwh         Float
+  priceEur           Int
+  promisedYieldKwh   Float
+  promisedSavingsEur Float
+  paybackYears       Float
+  plan               Json
+  offerText          String
+  offerSource        String
+  draftsRejected     Int
+  status             ProposalStatus @default(DRAFT)
+  createdAt          DateTime       @default(now())
+
+  @@unique([projectId, version])
+  @@unique([projectId, idempotencyKey])
+}
+
+model MonitoringDay {
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  day       Int
+  missing   Boolean @default(false)
+  hourlyKwh Float[]
+  ghiWm2    Float[]
+
+  @@id([projectId, day])
+}
+
+model Alarm {
+  id            String   @id @default(cuid())
+  projectId     String
+  project       Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  day           Int
+  kind          String
+  cause         String
+  performance   Float?
+  lossKwhPerDay Float
+  message       String
+  /** Day the installer reported the fault fixed; null while open. */
+  resolvedDay   Int?
+  createdAt     DateTime @default(now())
+
+  @@unique([projectId, day, cause])
+}

@@ -1,0 +1,9 @@
+node_modules/
+target/
+packages/sim/native/*.node
+apps/api/src/generated/
+apps/web/dist/
+.env
+*.log
+.pg/
+coverage/

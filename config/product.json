@@ -1,0 +1,137 @@
+{
+  "_doc": "Product settings. The simulated world (lab/src/world) never reads this file.",
+  "module": {
+    "albedo": 0.2,
+    "noct": 45,
+    "gamma": -0.0035,
+    "kwpPerM2": 0.205
+  },
+  "system": {
+    "losses": 0.14,
+    "inverterRatio": 0.9,
+    "batteryEfficiency": 0.9,
+    "batteryReserve": 0.05,
+    "batteryCRate": 0.5,
+    "batteryMaxKw": 5
+  },
+  "options": {
+    "faceFill": [
+      0,
+      0.5,
+      1
+    ],
+    "batteryKwh": [
+      0,
+      5,
+      8,
+      10,
+      15
+    ],
+    "minKwp": 2.5
+  },
+  "prices": {
+    "pvPerKwpEur": 1250,
+    "pvFixedEur": 2400,
+    "batteryPerKwhEur": 620,
+    "batteryFixedEur": 1100
+  },
+  "tariff": {
+    "gridEurPerKwh": 0.36,
+    "feedInEurPerKwh": 0.0786,
+    "feedInAbove10KwpEurPerKwh": 0.068
+  },
+  "economics": {
+    "years": 20,
+    "discountRate": 0.03,
+    "priceEscalation": 0.02,
+    "degradationPerYear": 0.005
+  },
+  "promise": {
+    "haircut": 0.06
+  },
+  "load": {
+    "heatDemandKwhPerM2ByAge": [
+      [
+        1978,
+        180
+      ],
+      [
+        1995,
+        130
+      ],
+      [
+        2009,
+        90
+      ],
+      [
+        2100,
+        55
+      ]
+    ],
+    "hotWaterKwhPerYear": 2400,
+    "heatingLimitC": 15,
+    "copAt7C": 3.4,
+    "copSlopePerK": 0.08,
+    "evKwhPerKm": 0.18,
+    "evHomeShare": 0.8
+  },
+  "rules": {
+    "yieldKwhPerKwp": 950,
+    "orientationFactor": [
+      [
+        0,
+        0.6
+      ],
+      [
+        45,
+        0.65
+      ],
+      [
+        90,
+        0.8
+      ],
+      [
+        135,
+        0.93
+      ],
+      [
+        180,
+        1.0
+      ],
+      [
+        225,
+        0.93
+      ],
+      [
+        270,
+        0.8
+      ],
+      [
+        315,
+        0.65
+      ],
+      [
+        360,
+        0.6
+      ]
+    ],
+    "selfConsumptionNoBattery": 0.3,
+    "selfConsumptionWithBattery": 0.6,
+    "batteryKwhPerKwp": 1
+  },
+  "offer": {
+    "maxDrafts": 3,
+    "model": "claude-sonnet-5-5",
+    "language": "de"
+  },
+  "aftercare": {
+    "baselineDays": 21,
+    "minExpectedKwh": 1.0,
+    "cusumSlack": 0.08,
+    "cusumLimit": 0.3,
+    "offlineAfterDays": 2,
+    "shadingBinSpread": 0.25,
+    "soilingSlopePerDay": -0.002,
+    "thresholdShare": 0.7
+  }
+}

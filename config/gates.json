@@ -1,0 +1,71 @@
+{
+  "_doc": "Release gates on the platform design, checked on the dev seeds. Each compares against an absolute limit or against the status quo (the spreadsheet).",
+  "gates": [
+    {
+      "id": "yield-error",
+      "metric": "yieldErrorPct",
+      "max": 6,
+      "label": "Mean error of the expected annual yield, %"
+    },
+    {
+      "id": "broken-promises",
+      "metric": "brokenPromiseRate",
+      "max": 0.05,
+      "label": "Customers whose first-year savings fall below 85% of the promise"
+    },
+    {
+      "id": "broken-vs-status-quo",
+      "metric": "brokenPromiseRate",
+      "maxShareOfStatusQuo": 0.25,
+      "label": "Broken promises as a share of the spreadsheet's"
+    },
+    {
+      "id": "invented-numbers",
+      "metric": "inventedNumbersSent",
+      "max": 0,
+      "label": "Invented numbers that reached a customer"
+    },
+    {
+      "id": "customer-value",
+      "metric": "customerValuePer100LeadsEur",
+      "minDeltaVsStatusQuo": 0,
+      "label": "Customers' realised 20-year value per 100 leads, above the spreadsheet"
+    },
+    {
+      "id": "installer-revenue",
+      "metric": "revenuePer100LeadsEur",
+      "minDeltaVsStatusQuo": 0,
+      "label": "Installer revenue per 100 leads, above the spreadsheet"
+    },
+    {
+      "id": "material-faults",
+      "metric": "materialDetectionRate",
+      "min": 0.9,
+      "label": "Material faults found within the year"
+    },
+    {
+      "id": "days-to-detect",
+      "metric": "medianDaysToDetect",
+      "max": 7,
+      "label": "Median days from fault to alarm"
+    },
+    {
+      "id": "cause",
+      "metric": "causeAccuracy",
+      "min": 0.75,
+      "label": "Alarms that name the right cause"
+    },
+    {
+      "id": "false-alarms",
+      "metric": "falseAlarmsPer100",
+      "max": 5,
+      "label": "False alarms per 100 systems and year"
+    },
+    {
+      "id": "parity",
+      "metric": "engineParityMaxRelError",
+      "max": 1e-09,
+      "label": "Rust engine against the TypeScript reference, largest relative difference"
+    }
+  ]
+}
