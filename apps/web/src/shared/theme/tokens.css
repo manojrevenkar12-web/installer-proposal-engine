@@ -1,0 +1,98 @@
+/* Design tokens. Components use these names, never raw values. */
+@import "tailwindcss";
+
+:root {
+  --paper: #eef1ee;
+  --surface: #fbfcfb;
+  --surface-sunk: #e4e9e6;
+  --ink: #1d2a2f;
+  --ink-2: #4b5a60;
+  --ink-3: #6c7a7f;
+  --line: #d2d9d6;
+  --focus: #3468c7;
+
+  /* Energy flows, validated for colour-vision deficiency on --surface. */
+  --flow-pv: #c47f00;
+  --flow-self: #0e8a63;
+  --flow-export: #3468c7;
+  --flow-import: #a34e86;
+
+  --sun-0: #f6efe0;
+  --sun-1: #f1d9a3;
+  --sun-2: #e8b955;
+  --sun-3: #c47f00;
+  --sun-4: #7a4c00;
+
+  --ok: #0e7a57;
+  --warn: #a66300;
+  --alarm: #b23a2a;
+  --alarm-tint: #f6e4e0;
+  --check: #0e8a63;
+  --check-tint: #e0f1ea;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #11171a;
+    --surface: #151c1f;
+    --surface-sunk: #0d1214;
+    --ink: #e6ecea;
+    --ink-2: #b2bfbd;
+    --ink-3: #8c9a98;
+    --line: #2a3538;
+    --focus: #7aa2ec;
+    --flow-pv: #b98010;
+    --flow-self: #26986b;
+    --flow-export: #5583d2;
+    --flow-import: #b2629e;
+    --sun-0: #1d2224;
+    --sun-1: #4a3a17;
+    --sun-2: #7d5d14;
+    --sun-3: #b98010;
+    --sun-4: #f0c25a;
+    --ok: #3bb07e;
+    --warn: #e0a21e;
+    --alarm: #e2735f;
+    --alarm-tint: #3a1f1a;
+    --check: #3bb07e;
+    --check-tint: #13281f;
+  }
+}
+
+@theme inline {
+  --font-sans: "Commissioner Variable", ui-sans-serif, system-ui, sans-serif;
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-sunk: var(--surface-sunk);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-focus: var(--focus);
+  --color-pv: var(--flow-pv);
+  --color-self: var(--flow-self);
+  --color-export: var(--flow-export);
+  --color-import: var(--flow-import);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-alarm: var(--alarm);
+  --color-alarm-tint: var(--alarm-tint);
+  --color-check: var(--check);
+  --color-check-tint: var(--check-tint);
+  /* Type scale: major third from 16px. */
+  --text-xs: 0.8rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5625rem;
+  --text-2xl: 1.953rem;
+  --text-3xl: 2.441rem;
+  --radius-chip: 999px;
+  --radius-panel: 10px;
+  --radius-mark: 4px;
+}
+
+html { background: var(--paper); color: var(--ink); font-family: var(--font-sans); font-feature-settings: "tnum" 1, "ss01" 1; }
+body { margin: 0; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }

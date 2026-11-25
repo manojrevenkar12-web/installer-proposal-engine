@@ -6,9 +6,9 @@ import { defaultEngine } from "@ipe/sim";
 import type { Engine } from "@ipe/sim";
 import { adminTokenMatches, hashKey, newApiKey, requireCompany } from "./auth.ts";
 import type { Db } from "./db.ts";
-import { ingestMonitoring } from "./services/aftercare.ts";
+import { ingestMonitoring, monitoringSeries } from "./services/aftercare.ts";
 import type { DayInput } from "./services/aftercare.ts";
-import { HttpError, createProposal } from "./services/proposals.ts";
+import { HttpError, createProposal, proposalYear } from "./services/proposals.ts";
 
 export interface AppOptions {
   db: Db;
@@ -128,6 +128,9 @@ export function buildApp(opts: AppOptions): FastifyInstance {
       if (!project) return reply.code(404).send({ error: "project not found" });
       return project;
     });
+
+    scoped.get<{ Params: { id: string } }>("/v1/projects/:id/year", async (req) => proposalYear(deps, req.companyId, req.params.id));
+    scoped.get<{ Params: { id: string } }>("/v1/projects/:id/monitoring", async (req) => monitoringSeries(deps, req.companyId, req.params.id));
 
     scoped.put<{ Params: { id: string }; Body: { faces: NonNullable<ProjectInput["faces"]> } }>("/v1/projects/:id/faces", {
       schema: { body: { type: "object", required: ["faces"], properties: { faces: { type: "array", minItems: 1, maxItems: 6, items: face } } } },

@@ -8,6 +8,28 @@ import type { Db } from "../db.ts";
 import { leadOf } from "./leads.ts";
 import { HttpError } from "./proposals.ts";
 
+export async function monitoringSeries(deps: { db: Db; engine: Engine; config: ProductConfig }, companyId: string, projectId: string) {
+  const project = await deps.db.project.findFirst({
+    where: { id: projectId, companyId },
+    include: { faces: true, days: { orderBy: { day: "asc" } }, proposals: { where: { status: "ACCEPTED" }, orderBy: { version: "desc" }, take: 1 } },
+  });
+  if (!project) throw new HttpError(404, "project not found");
+  const accepted = project.proposals[0];
+  if (!accepted) return { days: [] };
+  const lead = leadOf(project);
+  const typical = typicalYear(lead.latDeg, lead.lonDeg);
+  const ghi = Float64Array.from(typical.ghi);
+  for (const d of project.days) if (d.ghiWm2.length === 24) for (let h = 0; h < 24; h++) ghi[d.day * 24 + h] = d.ghiWm2[h];
+  const expected = expectedHourly(lead, accepted.plan as unknown as Plan, { ...typical, ghi }, deps.engine, deps.config, true);
+  return {
+    days: project.days.map((d) => {
+      let exp = 0;
+      for (let h = 0; h < 24; h++) exp += expected[d.day * 24 + h];
+      return { day: d.day, measuredKwh: d.missing ? null : d.hourlyKwh.reduce((a, b) => a + b, 0), expectedKwh: exp };
+    }),
+  };
+}
+
 export interface DayInput { day: number; hourlyKwh: (number | null)[]; ghiWm2?: number[] }
 
 export async function ingestMonitoring(deps: { db: Db; engine: Engine; config: ProductConfig; writer: Writer | null }, companyId: string, projectId: string, days: DayInput[]) {

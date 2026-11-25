@@ -36,22 +36,34 @@ pub fn sun_position(hour: usize, lat: f64, lon: f64) -> Sun {
         - 0.002697 * (3.0 * b).cos()
         + 0.00148 * (3.0 * b).sin();
     let eot = 229.18
-        * (0.000075 + 0.001868 * b.cos() - 0.032077 * b.sin() - 0.014615 * (2.0 * b).cos()
+        * (0.000075 + 0.001868 * b.cos()
+            - 0.032077 * b.sin()
+            - 0.014615 * (2.0 * b).cos()
             - 0.040849 * (2.0 * b).sin());
     let solar_time = clock + (4.0 * (lon - 15.0) + eot) / 60.0;
     let omega = (15.0 * (solar_time - 12.0)) * DEG;
     let phi = lat * DEG;
     let cos_z = (phi.sin() * decl.sin() + phi.cos() * decl.cos() * omega.cos()).clamp(-1.0, 1.0);
     let elevation = 90.0 - cos_z.acos() / DEG;
-    let az_south = omega.sin().atan2(omega.cos() * phi.sin() - decl.tan() * phi.cos());
+    let az_south = omega
+        .sin()
+        .atan2(omega.cos() * phi.sin() - decl.tan() * phi.cos());
     let mut azimuth = az_south / DEG + 180.0;
     if azimuth >= 360.0 {
         azimuth -= 360.0;
     }
     let extra = 1367.0
-        * (1.00011 + 0.034221 * b.cos() + 0.00128 * b.sin() + 0.000719 * (2.0 * b).cos()
+        * (1.00011
+            + 0.034221 * b.cos()
+            + 0.00128 * b.sin()
+            + 0.000719 * (2.0 * b).cos()
             + 0.000077 * (2.0 * b).sin());
-    Sun { cos_zenith: cos_z, elevation, azimuth, extra }
+    Sun {
+        cos_zenith: cos_z,
+        elevation,
+        azimuth,
+        extra,
+    }
 }
 
 /// Erbs et al. (1982) split of global horizontal irradiance into beam-normal and diffuse.
@@ -93,6 +105,7 @@ pub fn horizon_bin(azimuth: f64) -> usize {
 
 /// DC energy per installed kWp, hour by hour, for one roof face.
 /// Returns (shaded, unshaded); unshaded ignores the horizon so the loss can be reported.
+#[allow(clippy::too_many_arguments)]
 pub fn face_profile(
     ghi: &[f64],
     temp: &[f64],
@@ -120,9 +133,15 @@ pub fn face_profile(
         let sun = sun_position(h, lat, lon);
         let (dni, dhi) = split_irradiance(g, &sun);
         let sin_z = (1.0 - sun.cos_zenith * sun.cos_zenith).max(0.0).sqrt();
-        let cos_aoi = sun.cos_zenith * beta.cos() + sin_z * beta.sin() * ((sun.azimuth - azimuth) * DEG).cos();
-        let beam = if sun.cos_zenith > 0.0 { dni * cos_aoi.max(0.0) } else { 0.0 };
-        let blocked = horizon.len() == HORIZON_BINS && sun.elevation < horizon[horizon_bin(sun.azimuth)];
+        let cos_aoi = sun.cos_zenith * beta.cos()
+            + sin_z * beta.sin() * ((sun.azimuth - azimuth) * DEG).cos();
+        let beam = if sun.cos_zenith > 0.0 {
+            dni * cos_aoi.max(0.0)
+        } else {
+            0.0
+        };
+        let blocked =
+            horizon.len() == HORIZON_BINS && sun.elevation < horizon[horizon_bin(sun.azimuth)];
         let ground = g * module.albedo * (1.0 - beta.cos()) / 2.0;
         let sky = dhi * (1.0 + beta.cos()) / 2.0;
         let poa_open = beam + sky + ground;
@@ -198,7 +217,11 @@ pub fn balance(
         monthly_pv_kwh: vec![0.0; 12],
         monthly_imported_kwh: vec![0.0; 12],
         monthly_exported_kwh: vec![0.0; 12],
-        ac_kwh: if keep_hourly { vec![0.0; HOURS] } else { Vec::new() },
+        ac_kwh: if keep_hourly {
+            vec![0.0; HOURS]
+        } else {
+            Vec::new()
+        },
         ..Default::default()
     };
     let leg = system.battery_efficiency.max(1e-9).sqrt();
@@ -250,13 +273,21 @@ mod tests {
     use super::*;
 
     fn module() -> Module {
-        Module { albedo: 0.2, noct: 45.0, gamma: -0.0035 }
+        Module {
+            albedo: 0.2,
+            noct: 45.0,
+            gamma: -0.0035,
+        }
     }
 
     #[test]
     fn sun_is_high_at_noon_in_june_and_below_horizon_at_midnight() {
         let noon = sun_position(171 * 24 + 12, 52.5, 13.4);
-        assert!(noon.elevation > 55.0 && noon.elevation < 62.0, "{}", noon.elevation);
+        assert!(
+            noon.elevation > 55.0 && noon.elevation < 62.0,
+            "{}",
+            noon.elevation
+        );
         assert!((noon.azimuth - 180.0).abs() < 25.0, "{}", noon.azimuth);
         let midnight = sun_position(171 * 24, 52.5, 13.4);
         assert!(midnight.elevation < 0.0);
@@ -274,13 +305,37 @@ mod tests {
 
     #[test]
     fn a_full_horizon_blocks_all_beam() {
-        let ghi: Vec<f64> = (0..HOURS).map(|h| {
-            let s = sun_position(h, 50.0, 10.0);
-            if s.cos_zenith > 0.0 { 800.0 * s.cos_zenith } else { 0.0 }
-        }).collect();
+        let ghi: Vec<f64> = (0..HOURS)
+            .map(|h| {
+                let s = sun_position(h, 50.0, 10.0);
+                if s.cos_zenith > 0.0 {
+                    800.0 * s.cos_zenith
+                } else {
+                    0.0
+                }
+            })
+            .collect();
         let temp = vec![15.0; HOURS];
-        let (open, _) = face_profile(&ghi, &temp, 50.0, 10.0, 180.0, 30.0, &[0.0; HORIZON_BINS], module());
-        let (walled, unshaded) = face_profile(&ghi, &temp, 50.0, 10.0, 180.0, 30.0, &[90.0; HORIZON_BINS], module());
+        let (open, _) = face_profile(
+            &ghi,
+            &temp,
+            50.0,
+            10.0,
+            180.0,
+            30.0,
+            &[0.0; HORIZON_BINS],
+            module(),
+        );
+        let (walled, unshaded) = face_profile(
+            &ghi,
+            &temp,
+            50.0,
+            10.0,
+            180.0,
+            30.0,
+            &[90.0; HORIZON_BINS],
+            module(),
+        );
         let sum = |v: &Vec<f64>| v.iter().sum::<f64>();
         assert!(sum(&walled) < 0.2 * sum(&open));
         assert!((sum(&unshaded) - sum(&open)).abs() < 1e-6);
@@ -288,12 +343,28 @@ mod tests {
 
     #[test]
     fn battery_never_creates_energy() {
-        let pv: Vec<f64> = (0..HOURS).map(|h| if (8..16).contains(&(h % 24)) { 1.2 } else { 0.0 }).collect();
+        let pv: Vec<f64> = (0..HOURS)
+            .map(|h| {
+                if (8..16).contains(&(h % 24)) {
+                    1.2
+                } else {
+                    0.0
+                }
+            })
+            .collect();
         let load = vec![0.4; HOURS];
         let price = vec![0.35; HOURS];
-        let sys = System { losses: 0.1, inverter_kw: 10.0, battery_kwh: 10.0, battery_kw: 5.0, battery_efficiency: 0.9, battery_reserve: 0.05 };
+        let sys = System {
+            losses: 0.1,
+            inverter_kw: 10.0,
+            battery_kwh: 10.0,
+            battery_kw: 5.0,
+            battery_efficiency: 0.9,
+            battery_reserve: 0.05,
+        };
         let b = balance(&pv, &load, &price, 0.08, sys, false);
-        let charged_in = b.pv_kwh - b.exported_kwh - (b.load_kwh - b.imported_kwh - b.battery_discharged_kwh);
+        let charged_in =
+            b.pv_kwh - b.exported_kwh - (b.load_kwh - b.imported_kwh - b.battery_discharged_kwh);
         // Energy out of the battery is at most 90% of what went in.
         assert!(b.battery_discharged_kwh <= charged_in * 0.9 + 1e-6);
         assert!((b.self_consumed_kwh + b.imported_kwh - b.load_kwh).abs() < 1e-6);

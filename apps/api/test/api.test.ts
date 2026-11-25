@@ -69,6 +69,10 @@ test("a proposal is created once per idempotency key and versions supersede each
   assert.ok(offer.priceEur <= 26000);
   const facts = (offer.plan as { facts: Fact[] }).facts;
   assert.ok(checkDraft(offer.offerText, facts, "de").ok, "every number in the offer is a fact");
+  const year = (await app.inject({ method: "GET", url: `/v1/projects/${project.id}/year`, headers: h })).json();
+  assert.equal(year.version, 2);
+  assert.equal(year.pvKwh.length, 8760);
+  assert.ok(Math.abs(year.pvKwh.reduce((a: number, b: number) => a + b, 0) - second.json().plan.expected.yieldKwh) / second.json().plan.expected.yieldKwh < 0.002);
   const stale = await app.inject({ method: "POST", url: `/v1/proposals/${offer.id}/accept`, headers: h });
   assert.equal(stale.statusCode, 409);
 });
@@ -119,6 +123,9 @@ test("monitoring starts after signing, finds an outage, and is idempotent", { sk
   assert.match(alarms[0].message, /Wechselrichter/);
   const r2 = await app.inject({ method: "POST", url: `/v1/projects/${project.id}/monitoring`, headers: h, payload: { days } });
   assert.deepEqual(r2.json().alarms.map((a: { id: string }) => a.id), alarms.map((a) => (a as unknown as { id: string }).id));
+  const series = (await app.inject({ method: "GET", url: `/v1/projects/${project.id}/monitoring`, headers: h })).json().days;
+  assert.equal(series.length, 70);
+  assert.ok(Math.abs(series[0].measuredKwh / series[0].expectedKwh - 0.95) < 1e-6);
   const listed = (await app.inject({ method: "GET", url: "/v1/alarms", headers: h })).json().alarms;
   assert.equal(listed.length, 1, "an unrepaired outage is one alarm, not one every few days");
   const fixed = await app.inject({ method: "POST", url: `/v1/alarms/${listed[0].id}/resolve`, headers: h, payload: { day: 160 } });

@@ -3,6 +3,11 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "exports": { ".": "./src/index.ts" },
-  "dependencies": { "@ipe/sim": "*" }
+  "exports": {
+    ".": "./src/index.ts",
+    "./offer": "./src/offer/browser.ts"
+  },
+  "dependencies": {
+    "@ipe/sim": "*"
+  }
 }

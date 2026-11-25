@@ -1,10 +1,25 @@
 // A proposal is a new version of the offer for a project. The simulation and optimiser decide
 // the system and the numbers; the writer only words them, and the checker decides what is sent.
-import { PLATFORM_OPTIONS, compose, offerFacts, plan, typicalYear } from "@ipe/core";
-import type { ProductConfig, Writer } from "@ipe/core";
+import { PLATFORM_OPTIONS, compose, estimateLoad, expectedHourly, offerFacts, plan, typicalYear } from "@ipe/core";
+import type { Plan, ProductConfig, Writer } from "@ipe/core";
 import type { Engine } from "@ipe/sim";
 import type { Db } from "../db.ts";
 import { leadOf } from "./leads.ts";
+
+/** The expected hourly yield and use of the latest proposal in a typical year, for the console's year view. */
+export async function proposalYear(deps: ProposalDeps, companyId: string, projectId: string) {
+  const project = await deps.db.project.findFirst({ where: { id: projectId, companyId }, include: { faces: true, proposals: { orderBy: { version: "desc" }, take: 1 } } });
+  if (!project) throw new HttpError(404, "project not found");
+  const latest = project.proposals[0];
+  if (!latest) return { version: null, pvKwh: [], loadKwh: [] };
+  const lead = leadOf(project);
+  const weather = typicalYear(lead.latDeg, lead.lonDeg);
+  const plan = latest.plan as unknown as Plan;
+  const pv = expectedHourly(lead, plan, weather, deps.engine, deps.config, true);
+  const load = estimateLoad(lead, PLATFORM_OPTIONS.load, weather, deps.config.load);
+  const r3 = (x: number) => Math.round(x * 1000) / 1000;
+  return { version: latest.version, pvKwh: Array.from(pv, r3), loadKwh: Array.from(load, r3) };
+}
 
 export class HttpError extends Error {
   status: number;

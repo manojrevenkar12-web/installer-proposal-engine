@@ -1,0 +1,92 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  rust:
+    runs-on: ubuntu-24.04
+    defaults: { run: { working-directory: packages/sim } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with: { components: "rustfmt, clippy" }
+      - uses: Swatinem/rust-cache@v2
+        with: { workspaces: packages/sim }
+      - run: cargo fmt --check
+      - run: cargo clippy --release --all-targets -- -D warnings
+      - run: cargo test --release
+
+  node:
+    runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: postgres:16
+        env: { POSTGRES_USER: ipe, POSTGRES_PASSWORD: ipe, POSTGRES_DB: ipe_test }
+        ports: ["5432:5432"]
+        options: --health-cmd "pg_isready -U ipe" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://ipe:ipe@localhost:5432/ipe_test
+      IPE_REQUIRE_RUST: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with: { workspaces: packages/sim }
+      - run: npm ci
+      - run: npm run build:native
+      - name: Prisma client and migrations
+        working-directory: apps/api
+        run: |
+          npx prisma generate
+          npx prisma migrate deploy
+          # The checked-in migrations must produce exactly the schema.
+          npx prisma migrate diff --from-config-datasource --to-schema prisma/schema.prisma --exit-code
+      - run: npm run typecheck
+      - run: npm test
+
+  lab:
+    runs-on: ubuntu-24.04
+    env: { IPE_REQUIRE_RUST: "1" }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with: { workspaces: packages/sim }
+      - run: npm ci
+      - run: npm run build:native
+      - name: Re-run the dev study and require the committed reports to reproduce
+        run: |
+          npm run lab -- dev
+          git diff --exit-code -- reports/dev.json REPORT.md README.md apps/web/public/data/study.json
+      - run: npm run lab -- gate
+      - name: Held-out seeds are locked
+        run: |
+          set +e; node lab/src/cli.ts heldout; code=$?; set -e
+          test "$code" -eq 3
+
+  web:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: npm run typecheck -w @ipe/web
+      - run: npm test -w @ipe/web
+      - run: npm run build -w @ipe/web
+
+  docker:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t installer-proposal-engine .
+      - name: The image starts and answers its health check
+        run: |
+          docker run -d --name api -p 8080:8080 -e DATABASE_URL=postgresql://none@127.0.0.1:1/none installer-proposal-engine
+          for i in $(seq 1 20); do curl -fs localhost:8080/healthz && exit 0; sleep 1; done
+          docker logs api; exit 1

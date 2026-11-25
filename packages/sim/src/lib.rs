@@ -44,7 +44,11 @@ pub fn face_profile(
         azimuth,
         tilt,
         &horizon,
-        model::Module { albedo, noct, gamma },
+        model::Module {
+            albedo,
+            noct,
+            gamma,
+        },
     );
     let mut out = shaded;
     out.extend_from_slice(&open);

@@ -1,0 +1,9 @@
+node_modules
+**/node_modules
+packages/sim/target
+packages/sim/native
+apps/web/dist
+apps/api/src/generated
+.git
+docs
+reports
